@@ -34,9 +34,7 @@ import com.ichi2.libanki.NotetypeJson
 import com.ichi2.libanki.Notetypes
 import com.ichi2.libanki.exception.ConfirmModSchemaException
 import com.ichi2.libanki.utils.TimeManager
-import com.ichi2.testutils.Flaky
 import com.ichi2.testutils.MockTime
-import com.ichi2.testutils.OS
 import com.ichi2.utils.KotlinCleanup
 import com.ichi2.utils.deepClone
 import org.hamcrest.MatcherAssert.assertThat
@@ -82,8 +80,8 @@ class ReviewerTest : RobolectricTest() {
         assertThat("If the sound file with given name is not present, then no error occurs", true)
     }
 
+    //    @Flaky(os = OS.WINDOWS, "Issue 14308")
     @Test
-    @Flaky(os = OS.WINDOWS, "Issue 14308")
     fun nothingAppearsInAppBarIfAllAppBarButtonsAreDisabled() {
         disableAllReviewerAppBarButtons()
 

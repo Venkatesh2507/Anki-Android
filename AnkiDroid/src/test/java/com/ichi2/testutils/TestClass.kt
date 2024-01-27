@@ -201,7 +201,7 @@ interface TestClass {
     fun runTest(
         context: CoroutineContext = EmptyCoroutineContext,
         dispatchTimeoutMs: Long = 60_000L,
-        times: Int = 1,
+        times: Int = 100,
         testBody: suspend TestScope.() -> Unit
     ) {
         Dispatchers.setMain(UnconfinedTestDispatcher())
