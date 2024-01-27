@@ -206,7 +206,7 @@ interface TestClass {
     ) {
         Dispatchers.setMain(UnconfinedTestDispatcher())
         repeat(times) {
-            if (times != 1) Timber.d("------ Executing test $it/$times ------")
+            if (times != 100) Timber.d("------ Executing test $it/$times ------")
             kotlinx.coroutines.test.runTest(context, dispatchTimeoutMs.milliseconds) {
                 CollectionManager.setTestDispatcher(UnconfinedTestDispatcher(testScheduler))
                 testBody()
