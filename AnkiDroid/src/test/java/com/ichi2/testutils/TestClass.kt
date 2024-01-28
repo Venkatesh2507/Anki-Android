@@ -201,12 +201,12 @@ interface TestClass {
     fun runTest(
         context: CoroutineContext = EmptyCoroutineContext,
         dispatchTimeoutMs: Long = 60_000L,
-        times: Int = 1,
+        times: Int = 100,
         testBody: suspend TestScope.() -> Unit
     ) {
         Dispatchers.setMain(UnconfinedTestDispatcher())
         repeat(times) {
-            if (times != 1) Timber.d("------ Executing test $it/$times ------")
+            if (times != 100) Timber.d("------ Executing test $it/$times ------")
             kotlinx.coroutines.test.runTest(context, dispatchTimeoutMs.milliseconds) {
                 CollectionManager.setTestDispatcher(UnconfinedTestDispatcher(testScheduler))
                 testBody()
