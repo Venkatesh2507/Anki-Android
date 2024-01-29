@@ -80,9 +80,9 @@ class ReviewerTest : RobolectricTest() {
         assertThat("If the sound file with given name is not present, then no error occurs", true)
     }
 
-    //    @Flaky(os = OS.WINDOWS, "Issue 14308")
+//        @Flaky(os = OS.WINDOWS, "Issue 14308")
     @Test
-    fun nothingAppearsInAppBarIfAllAppBarButtonsAreDisabled() {
+    fun nothingAppearsInAppBarIfAllAppBarButtonsAreDisabled() = runTest {
         disableAllReviewerAppBarButtons()
 
         val reviewer = startReviewer(ReviewerForMenuItems::class.java)
@@ -268,9 +268,7 @@ class ReviewerTest : RobolectricTest() {
 
     private fun disableAllReviewerAppBarButtons() {
         val keys = PreferenceTestUtils.getAllCustomButtonKeys(targetContext)
-        Thread.sleep(2_000)
         val preferences = targetContext.sharedPrefs()
-        Thread.sleep(2_000)
         preferences.edit {
             for (k in keys) {
                 putString(k, ActionButtonStatus.MENU_DISABLED.toString())
